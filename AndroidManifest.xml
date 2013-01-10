@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="github.madmarty.madsonic"
+          android:installLocation="auto"
+          android:versionCode="142"
+          android:versionName="4.0.6"> 
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="15"/>
+
+    <supports-screens android:anyDensity="true" android:xlargeScreens="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+
+    <application android:label="@string/common.appname" android:icon="@drawable/launch" android:theme="@style/Fullscreenlight">
+
+        <activity android:name="github.madmarty.madsonic.activity.MainActivity"
+                  android:label="Madsonic"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="standard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="github.madmarty.madsonic.activity.SelectArtistActivity"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="standard"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.SelectAlbumActivity"
+                  android:configChanges="orientation|keyboardHidden"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.SearchActivity"
+                  android:label="@string/search.label"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.SelectPlaylistActivity"
+                  android:label="@string/playlist.label"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="standard"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.DownloadActivity"
+                  android:configChanges="keyboardHidden"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.SettingsActivity"
+                  android:theme="@android:style/Theme.Black"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.HelpActivity"
+                  android:label="@string/help.label"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.LyricsActivity"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.EqualizerActivity"
+                  android:label="@string/equalizer.label"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name="github.madmarty.madsonic.activity.VoiceQueryReceiverActivity"
+                  android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="github.madmarty.madsonic.activity.QueryReceiverActivity"
+                  android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+
+        <service android:name="github.madmarty.madsonic.service.DownloadServiceImpl"
+                 android:label="Subsonic Download Service"/>
+
+        <receiver android:name="github.madmarty.madsonic.receiver.MediaButtonIntentReceiver">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="github.madmarty.madsonic.receiver.BluetoothIntentReceiver">
+            <intent-filter>
+                <action android:name="android.bluetooth.a2dp.action.SINK_STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="github.madmarty.madsonic.provider.SubsonicAppWidgetProvider1" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info"/>
+        </receiver>
+
+        <provider android:name=".provider.SearchSuggestionProvider1"
+                  android:authorities="github.madmarty.madsonic.provider.SearchSuggestionProvider1"/>
+
+        <meta-data android:name="android.app.default_searchable"
+                   android:value="github.madmarty.madsonic.activity.QueryReceiverActivity"/>
+
+    </application>
+
+</manifest>

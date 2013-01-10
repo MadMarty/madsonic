@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="Dark" parent="@android:style/Theme.Black">
+        <item name="android:listViewStyle">@style/listselect</item>
+        <item name="android:progressBarStyleHorizontal">@style/customprogress</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/orange</item>
+    </style>
+   
+    <style name="Light" parent="@android:style/Theme.Light">
+        <item name="android:listViewStyle">@style/listselectlight</item>
+        <item name="android:progressBarStyleHorizontal">@style/customprogress</item>
+        <item name="android:textColorSecondary">@color/orange</item>
+    </style>
+    
+    <style name="Fullscreendark" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:listViewStyle">@style/listselect</item>
+        <item name="android:progressBarStyleHorizontal">@style/customprogress</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/orange</item>
+    </style>
+    
+    <style name="Fullscreenlight" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+        <item name="android:listViewStyle">@style/listselectlight</item>
+        <item name="android:progressBarStyleHorizontal">@style/customprogress</item>
+        <item name="android:textColorSecondary">@color/orange</item>
+    </style>
+    
+    <style name="listselect" parent="android:style/Widget.ListView">
+        <item name="android:listSelector">@drawable/list_selector_holo_dark</item>
+    </style>
+    
+    <style name="listselectlight" parent="android:style/Widget.ListView.White">
+        <item name="android:listSelector">@drawable/list_selector_holo_light</item>
+    </style>
+    
+    <style name="customprogress" parent="android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_holo_dark</item>
+    </style>
+    
+</resources>
