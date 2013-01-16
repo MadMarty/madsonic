@@ -18,6 +18,7 @@
     <color name="grey">#ffe0e0e0</color>
     <color name="cyan">#ffff8000</color>
     <color name="orange">#ff8000</color>
+	<color name="red">#a30201</color>
     
     <color name="transparent">#00000000</color>
     <color name="ics_opaque">#8033b5e5</color>

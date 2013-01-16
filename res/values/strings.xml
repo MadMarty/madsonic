@@ -151,6 +151,7 @@
     <string name="settings.theme_title">Theme</string>
     <string name="settings.theme_light">Light</string>
     <string name="settings.theme_dark">Dark</string>
+	<string name="settings.theme_sigelsonic">Sigelsonic</string>
     <string name="settings.theme_fullscreenlight">Fullscreen Light</string>
     <string name="settings.theme_fullscreendark">Fullscreen Dark</string>
     <string name="settings.network_title">Network</string>
