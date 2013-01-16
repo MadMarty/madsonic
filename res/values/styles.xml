@@ -12,6 +12,13 @@
         <item name="android:progressBarStyleHorizontal">@style/customprogress</item>
         <item name="android:textColorSecondary">@color/orange</item>
     </style>
+	
+	<style name="Sigelsonic" parent="@android:style/Theme.Sigelsonic">
+        <item name="android:listViewStyle">@style/listselect</item>
+        <item name="android:progressBarStyleHorizontal">@style/customprogress</item>
+		<item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/red</item>
+    </style>
     
     <style name="Fullscreendark" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         <item name="android:listViewStyle">@style/listselect</item>

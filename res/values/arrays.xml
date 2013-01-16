@@ -18,6 +18,7 @@
     <string-array name="themeValues">
         <item>Light</item>
         <item>Dark</item>
+		<item>Sigelsonic</item>
         <item>fullscreendark</item>
         <item>fullscreenlight</item>
 
@@ -26,6 +27,7 @@
     <string-array name="themeNames">
         <item>@string/settings.theme_light</item>
         <item>@string/settings.theme_dark</item>
+		<item>@string/settings.theme_sigelsonic</item>
         <item>@string/settings.theme_fullscreendark</item>
         <item>@string/settings.theme_fullscreenlight</item>
 
