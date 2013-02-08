@@ -167,6 +167,7 @@ public class SelectAlbumActivity extends SubsonicTabActivity {
         String playlistId = getIntent().getStringExtra(Constants.INTENT_EXTRA_NAME_PLAYLIST_ID);
         String playlistName = getIntent().getStringExtra(Constants.INTENT_EXTRA_NAME_PLAYLIST_NAME);
         String albumListType = getIntent().getStringExtra(Constants.INTENT_EXTRA_NAME_ALBUM_LIST_TYPE);
+        int getStarredTracks = getIntent().getIntExtra(Constants.INTENT_EXTRA_NAME_STARRED, 0);
         int albumListSize = getIntent().getIntExtra(Constants.INTENT_EXTRA_NAME_ALBUM_LIST_SIZE, 0);
         int albumListOffset = getIntent().getIntExtra(Constants.INTENT_EXTRA_NAME_ALBUM_LIST_OFFSET, 0);
 
@@ -174,6 +175,8 @@ public class SelectAlbumActivity extends SubsonicTabActivity {
             getPlaylist(playlistId, playlistName);
         } else if (albumListType != null) {
             getAlbumList(albumListType, albumListSize, albumListOffset);
+        } else if (getStarredTracks != 0) {
+        	getStarred();
         } else {
             getMusicDirectory(id, name);
         }
@@ -307,7 +310,16 @@ public class SelectAlbumActivity extends SubsonicTabActivity {
             }
         }.execute();
     }
-
+    private void getStarred() {
+        setTitle(R.string.main_songs_starred);
+        new LoadTask() {
+            @Override
+            protected MusicDirectory load(MusicService service) throws Exception {
+                return Util.getSongsFromSearchResult(service.getStarred(SelectAlbumActivity.this, this));
+            }
+        }.execute();
+    }
+    
     private void getPlaylist(final String playlistId, final String playlistName) {
         setTitle(playlistName);
 
@@ -331,6 +343,12 @@ public class SelectAlbumActivity extends SubsonicTabActivity {
             setTitle(R.string.main_albums_recent);
         } else if ("frequent".equals(albumListType)) {
             setTitle(R.string.main_albums_frequent);
+        } else if ("starred".equals(albumListType)) {
+            setTitle(R.string.main_albums_starred);
+        } else if ("alphabeticalByName".equals(albumListType)) {
+        	setTitle(R.string.main_albums_alphaByName);
+        } else if ("alphabeticalByArtist".equals(albumListType)) {
+        	setTitle(R.string.main_albums_alphaByArtist);
         }
 
         new LoadTask() {
@@ -345,8 +363,13 @@ public class SelectAlbumActivity extends SubsonicTabActivity {
                     pinButton.setVisibility(View.GONE);
                     unpinButton.setVisibility(View.GONE);
                     deleteButton.setVisibility(View.GONE);
-                    moreButton.setVisibility(View.VISIBLE);
-                    entryList.addFooterView(footer);
+                    // Hide more button when results are less than album list size
+                    if (result.getFirst().getChildren().size() < getIntent().getIntExtra(Constants.INTENT_EXTRA_NAME_ALBUM_LIST_SIZE, 0)) {
+                    	moreButton.setVisibility(View.GONE);
+                    } else {
+                    	entryList.addFooterView(footer);
+                    	moreButton.setVisibility(View.VISIBLE);
+                    }
 
                     moreButton.setOnClickListener(new View.OnClickListener() {
                         @Override

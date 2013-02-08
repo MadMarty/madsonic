@@ -45,7 +45,7 @@ import github.madmarty.madsonic.util.Util;
  */
 public class CachedMusicService implements MusicService {
 
-    private static final int MUSIC_DIR_CACHE_SIZE = 20;
+    private static final int MUSIC_DIR_CACHE_SIZE = 40;
     private static final int TTL_MUSIC_DIR = 5 * 60; // Five minutes
 
     private final MusicService musicService;
@@ -166,6 +166,11 @@ public class CachedMusicService implements MusicService {
     @Override
     public MusicDirectory getRandomSongs(int size, Context context, ProgressListener progressListener) throws Exception {
         return musicService.getRandomSongs(size, context, progressListener);
+    }
+    
+    @Override
+    public SearchResult getStarred(Context context, ProgressListener progressListener) throws Exception {
+    	return musicService.getStarred(context, progressListener);
     }
 
     @Override

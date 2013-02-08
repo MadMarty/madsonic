@@ -53,8 +53,10 @@ import github.madmarty.madsonic.R;
 
 import github.madmarty.madsonic.activity.DownloadActivity;
 import github.madmarty.madsonic.domain.MusicDirectory;
+import github.madmarty.madsonic.domain.MusicDirectory.Entry;
 import github.madmarty.madsonic.domain.PlayerState;
 import github.madmarty.madsonic.domain.RepeatMode;
+import github.madmarty.madsonic.domain.SearchResult;
 import github.madmarty.madsonic.domain.Version;
 import github.madmarty.madsonic.provider.SubsonicAppWidgetProvider1;
 import github.madmarty.madsonic.receiver.MediaButtonIntentReceiver;
@@ -111,6 +113,9 @@ public final class Util {
     }
 
     public static boolean isOffline(Context context) {
+        if (context == null)
+        	return false;
+        else
         return getActiveServer(context) == 0;
     }
 
@@ -816,6 +821,16 @@ public final class Util {
             notificationManager.cancel(Constants.NOTIFICATION_ID_PLAYING);
             Log.i(TAG, "Service.stopForeground() not available. Using work-around.");
         }
+    }
+    
+    public static MusicDirectory getSongsFromSearchResult(SearchResult searchResult) {
+    	MusicDirectory musicDirectory = new MusicDirectory();
+    	
+    	for (Entry entry : searchResult.getSongs()) {
+    		musicDirectory.addChild(entry);	
+    	}
+    	
+    	return musicDirectory;
     }
 
     /**

@@ -30,7 +30,7 @@ public final class Constants {
     // REST protocol version and client ID.
     // Note: Keep it as low as possible to maintain compatibility with older servers.
     public static final String REST_PROTOCOL_VERSION = "1.7.0";
-    public static final String REST_CLIENT_ID = "Madsonic";
+    public static final String REST_CLIENT_ID = "madsonic";
 
     // Names for intent extras.
     public static final String INTENT_EXTRA_NAME_ID = "subsonic.id";
@@ -49,6 +49,7 @@ public final class Constants {
     public static final String INTENT_EXTRA_NAME_REFRESH = "subsonic.refresh";
     public static final String INTENT_EXTRA_REQUEST_SEARCH = "subsonic.requestsearch";
     public static final String INTENT_EXTRA_NAME_EXIT = "subsonic.exit" ;
+    public static final String INTENT_EXTRA_NAME_STARRED = "subsonic.starred";
 
     // Notification IDs.
     public static final int NOTIFICATION_ID_PLAYING = 100;

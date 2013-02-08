@@ -313,7 +313,11 @@ public class OfflineMusicService extends RESTMusicService {
     public void setStarred(String id, boolean starred, Context context, ProgressListener progressListener) throws Exception {
     	throw new OfflineException("Starring not available in offline mode");
     }
-
+	
+    @Override
+    public SearchResult getStarred(Context context, ProgressListener progressListener) throws Exception {
+    	throw new OfflineException("Starred not available in offline mode");
+    }
     @Override
     public MusicDirectory getRandomSongs(int size, Context context, ProgressListener progressListener) throws Exception {
         File root = FileUtil.getMusicDirectory(context);
